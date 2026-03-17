@@ -6,14 +6,14 @@
   /* One Piece / Straw Hat Palette */
   --bg:         #0a0d14;        /* Гүн далайн хөх */
   --surface:    #141923;        /* Хөлгийн бүхээгний өнгө */
-  --surface2:   #1d2433;        /* Модон бүтэцтэй төсөөтэй бараан хөх */
+  --surface2:   #1d2433;        /* Бараан хөх-саарал */
   --surface3:   #2a3245;
-  --border:     rgba(249, 215, 28, 0.15); /* Шар алтлаг туяа (Сүрлэн малгай) */
-  --border2:    rgba(217, 36, 36, 0.3);   /* Луффигийн хантаазны улаан */
+  --border:     rgba(249, 215, 28, 0.15); /* Сүрлэн малгайн шар туяа */
+  --border2:    rgba(217, 36, 36, 0.3);   /* Луффигийн улаан туяа */
   --accent:     #d92424;        /* Luffy Red */
   --accent2:    #f9d71c;        /* Straw Hat Yellow */
   --danger:     #ff4f6a;
-  --text:       #e6edf3;        /* Цагаан */
+  --text:       #e6edf3;        /* Цагаан текст */
   --muted:      #8b949e;        /* Саарал */
   --muted2:     #484f58;
 }
@@ -164,7 +164,7 @@ html, body {
   font-family: 'Unbounded', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  color: var(--accent2); /* Шар өнгө */
+  color: var(--accent2);
   letter-spacing: 0.1em;
 }
 
@@ -243,7 +243,7 @@ html, body {
   font-size: 11px; font-weight: 600;
   flex-shrink: 0;
   color: white;
-  background: var(--accent); /* Миний аватар улаан */
+  background: var(--accent);
 }
 .my-name {
   font-size: 12px; font-weight: 500;
@@ -276,6 +276,7 @@ html, body {
   flex-direction: column;
   overflow: hidden;
   background: var(--bg);
+  position: relative;
 }
 
 .chat-header {
@@ -286,6 +287,7 @@ html, body {
   justify-content: space-between;
   background: var(--surface);
   flex-shrink: 0;
+  z-index: 5;
 }
 .header-left {
   display: flex;
@@ -294,7 +296,7 @@ html, body {
   font-size: 14px;
   font-weight: 500;
 }
-.hash { color: var(--accent); } /* Hash-ийг улаан болголоо */
+.hash { color: var(--accent); }
 
 .live-pill {
   display: flex;
@@ -302,7 +304,7 @@ html, body {
   gap: 6px;
   font-size: 10px;
   color: var(--accent2);
-  border: 1px solid rgba(249, 215, 28, 0.3);
+  border: 1px solid rgba(249, 215, 28, 0.25);
   border-radius: 20px;
   padding: 4px 10px;
   letter-spacing: 0.06em;
@@ -317,7 +319,7 @@ html, body {
   50% { opacity:0.4; transform:scale(0.65); }
 }
 
-/* ── MESSAGES ── */
+/* ── MESSAGES (Theme Background Included) ── */
 .messages {
   flex: 1;
   overflow-y: auto;
@@ -326,7 +328,24 @@ html, body {
   flex-direction: column;
   gap: 2px;
   scroll-behavior: smooth;
+  position: relative; /* Background-д зайлшгүй хэрэгтэй */
 }
+
+/* OPTION 1: WATERMARK THEME */
+.messages::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  /* Straw Hat Jolly Roger дүрс */
+  background-image: url('https://upload.wikimedia.org/wikipedia/en/a/af/One_Piece_Jolly_Roger.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 45%; 
+  opacity: 0.04; /* Хэт тод биш, уншихад саад болохгүй */
+  pointer-events: none;
+  z-index: 0;
+}
+
 .messages::-webkit-scrollbar { width: 4px; }
 .messages::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
 
@@ -335,6 +354,8 @@ html, body {
   flex-direction: column;
   margin-bottom: 12px;
   animation: msgIn 0.22s ease;
+  position: relative;
+  z-index: 1; /* Мессежийг зургийн дээр гаргана */
 }
 @keyframes msgIn {
   from { opacity: 0; transform: translateY(6px); }
@@ -376,7 +397,7 @@ html, body {
 .msg-group.me .msg-bubble {
   margin-left: 0;
   margin-right: 34px;
-  background: rgba(217, 36, 36, 0.15); /* Миний мессеж улаан туяатай */
+  background: rgba(217, 36, 36, 0.15);
   border-color: var(--accent);
   border-radius: 12px 4px 12px 12px;
 }
@@ -404,15 +425,18 @@ html, body {
   align-items: center;
   gap: 6px;
   flex-shrink: 0;
+  position: relative;
+  z-index: 1;
 }
 .typing-dots { display: flex; gap: 3px; align-items: center; }
 .typing-dots span {
   width: 4px; height: 4px; border-radius: 50%;
-  background: var(--accent2); /* typing dots шар өнгөөр */
+  background: var(--accent2);
   display: block;
   animation: tdot 1.1s infinite;
 }
-/* ... rest of the typing animation is same ... */
+.typing-dots span:nth-child(2) { animation-delay: 0.18s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.36s; }
 @keyframes tdot {
   0%,60%,100% { transform: translateY(0); opacity:0.5; }
   30% { transform: translateY(-4px); opacity:1; }
@@ -427,6 +451,7 @@ html, body {
   align-items: center;
   background: var(--surface);
   flex-shrink: 0;
+  z-index: 5;
 }
 .input-bar input {
   flex: 1;
@@ -446,13 +471,12 @@ html, body {
 .send-btn {
   width: 42px; height: 42px;
   border-radius: 10px;
-  background: var(--accent2); /* Илгээх товч шар */
+  background: var(--accent2);
   border: none; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: opacity 0.15s, transform 0.1s;
   flex-shrink: 0;
 }
-.send-btn svg { fill: #000 !important; } /* Шар дээр хар дүрс илүү тод */
 .send-btn:hover { opacity: 0.85; }
 .send-btn:active { transform: scale(0.94); }
 
