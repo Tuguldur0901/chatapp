@@ -3,18 +3,19 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:        #0a0a0f;
-  --surface:   #111118;
-  --surface2:  #18181f;
-  --surface3:  #1f1f28;
-  --border:    rgba(130,110,255,0.14);
-  --border2:   rgba(130,110,255,0.28);
-  --accent:    #7864ff;
-  --accent2:   #00e5b0;
-  --danger:    #ff4f6a;
-  --text:      #e4e2ff;
-  --muted:     #6a6882;
-  --muted2:    #4a4862;
+  /* One Piece / Straw Hat Palette */
+  --bg:         #0a0d14;        /* Гүн далайн хөх */
+  --surface:    #141923;        /* Хөлгийн бүхээгний өнгө */
+  --surface2:   #1d2433;        /* Модон бүтэцтэй төсөөтэй бараан хөх */
+  --surface3:   #2a3245;
+  --border:     rgba(249, 215, 28, 0.15); /* Шар алтлаг туяа (Сүрлэн малгай) */
+  --border2:    rgba(217, 36, 36, 0.3);   /* Луффигийн хантаазны улаан */
+  --accent:     #d92424;        /* Luffy Red */
+  --accent2:    #f9d71c;        /* Straw Hat Yellow */
+  --danger:     #ff4f6a;
+  --text:       #e6edf3;        /* Цагаан */
+  --muted:      #8b949e;        /* Саарал */
+  --muted2:     #484f58;
 }
 
 html, body {
@@ -38,7 +39,7 @@ html, body {
   align-items: center;
   justify-content: center;
   background:
-    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(120,100,255,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(217, 36, 36, 0.1) 0%, transparent 70%),
     var(--bg);
 }
 
@@ -52,6 +53,7 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .join-logo {
@@ -108,7 +110,7 @@ html, body {
 .room-option.active {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(120,100,255,0.08);
+  background: rgba(217, 36, 36, 0.08);
 }
 
 .join-btn {
@@ -148,7 +150,7 @@ html, body {
   width: 230px;
   min-width: 230px;
   background: var(--surface);
-  border-right: 1px solid var(--border);
+  border-right: 1px solid var(--border2);
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -156,13 +158,13 @@ html, body {
 
 .sidebar-top {
   padding: 18px 16px 14px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border2);
 }
 .logo-small {
   font-family: 'Unbounded', sans-serif;
   font-size: 11px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent2); /* Шар өнгө */
   letter-spacing: 0.1em;
 }
 
@@ -197,7 +199,7 @@ html, body {
 }
 .room-item:hover { background: var(--surface2); color: var(--text); }
 .room-item.active {
-  background: rgba(120,100,255,0.1);
+  background: rgba(217, 36, 36, 0.1);
   color: var(--accent);
   border-left-color: var(--accent);
 }
@@ -214,7 +216,7 @@ html, body {
   width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--accent2);
-  box-shadow: 0 0 5px var(--accent2);
+  box-shadow: 0 0 8px var(--accent2);
   flex-shrink: 0;
 }
 .user-name-label { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -222,7 +224,7 @@ html, body {
 .sidebar-bottom {
   margin-top: auto;
   padding: 12px 14px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border2);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -241,6 +243,7 @@ html, body {
   font-size: 11px; font-weight: 600;
   flex-shrink: 0;
   color: white;
+  background: var(--accent); /* Миний аватар улаан */
 }
 .my-name {
   font-size: 12px; font-weight: 500;
@@ -249,7 +252,7 @@ html, body {
 .online-dot {
   width: 7px; height: 7px; border-radius: 50%;
   background: var(--accent2);
-  box-shadow: 0 0 5px var(--accent2);
+  box-shadow: 0 0 8px var(--accent2);
   flex-shrink: 0;
 }
 
@@ -277,7 +280,7 @@ html, body {
 
 .chat-header {
   padding: 14px 20px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border2);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -291,7 +294,7 @@ html, body {
   font-size: 14px;
   font-weight: 500;
 }
-.hash { color: var(--muted); }
+.hash { color: var(--accent); } /* Hash-ийг улаан болголоо */
 
 .live-pill {
   display: flex;
@@ -299,7 +302,7 @@ html, body {
   gap: 6px;
   font-size: 10px;
   color: var(--accent2);
-  border: 1px solid rgba(0,229,176,0.25);
+  border: 1px solid rgba(249, 215, 28, 0.3);
   border-radius: 20px;
   padding: 4px 10px;
   letter-spacing: 0.06em;
@@ -325,7 +328,7 @@ html, body {
   scroll-behavior: smooth;
 }
 .messages::-webkit-scrollbar { width: 4px; }
-.messages::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.messages::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 4px; }
 
 .msg-group {
   display: flex;
@@ -348,6 +351,7 @@ html, body {
   width: 26px; height: 26px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center;
   font-size: 10px; font-weight: 600; color: white; flex-shrink: 0;
+  background: var(--surface3);
 }
 .msg-sender { font-size: 12px; font-weight: 500; }
 .msg-time { font-size: 10px; color: var(--muted); }
@@ -372,8 +376,8 @@ html, body {
 .msg-group.me .msg-bubble {
   margin-left: 0;
   margin-right: 34px;
-  background: rgba(120,100,255,0.15);
-  border-color: rgba(120,100,255,0.3);
+  background: rgba(217, 36, 36, 0.15); /* Миний мессеж улаан туяатай */
+  border-color: var(--accent);
   border-radius: 12px 4px 12px 12px;
 }
 
@@ -404,12 +408,11 @@ html, body {
 .typing-dots { display: flex; gap: 3px; align-items: center; }
 .typing-dots span {
   width: 4px; height: 4px; border-radius: 50%;
-  background: var(--muted);
+  background: var(--accent2); /* typing dots шар өнгөөр */
   display: block;
   animation: tdot 1.1s infinite;
 }
-.typing-dots span:nth-child(2) { animation-delay: 0.18s; }
-.typing-dots span:nth-child(3) { animation-delay: 0.36s; }
+/* ... rest of the typing animation is same ... */
 @keyframes tdot {
   0%,60%,100% { transform: translateY(0); opacity:0.5; }
   30% { transform: translateY(-4px); opacity:1; }
@@ -418,7 +421,7 @@ html, body {
 /* ── INPUT BAR ── */
 .input-bar {
   padding: 14px 20px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--border2);
   display: flex;
   gap: 10px;
   align-items: center;
@@ -438,17 +441,18 @@ html, body {
   transition: border-color 0.18s;
 }
 .input-bar input::placeholder { color: var(--muted2); }
-.input-bar input:focus { border-color: var(--accent); }
+.input-bar input:focus { border-color: var(--accent2); }
 
 .send-btn {
   width: 42px; height: 42px;
   border-radius: 10px;
-  background: var(--accent);
+  background: var(--accent2); /* Илгээх товч шар */
   border: none; cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: opacity 0.15s, transform 0.1s;
   flex-shrink: 0;
 }
+.send-btn svg { fill: #000 !important; } /* Шар дээр хар дүрс илүү тод */
 .send-btn:hover { opacity: 0.85; }
 .send-btn:active { transform: scale(0.94); }
 

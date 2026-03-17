@@ -30,7 +30,7 @@
   const myNameEl     = document.getElementById('myName');
   const leaveBtn     = document.getElementById('leaveBtn');
 
-  const ROOMS = ['general', 'tech', 'random', 'design'];
+  const ROOMS = ['1', '2', '3', '4'];
 
   // ── Room picker (join screen) ──
   roomPicker.querySelectorAll('.room-option').forEach(el => {

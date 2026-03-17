@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const users = {};
 
 // Available rooms
-const rooms = ['general', 'tech', 'random', 'design'];
+const rooms = ['1', '2', '3', '4'];
 
 // Color palette for users
 const colors = [
