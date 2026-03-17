@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LiveChat</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- JOIN SCREEN -->
+  <div id="joinScreen" class="join-screen">
+    <div class="join-card">
+      <div class="join-logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">LIVE<span>CHAT</span></span>
+      </div>
+      <p class="join-sub">Бодит цагийн чат систем</p>
+
+      <div class="input-group">
+        <label>Таны нэр</label>
+        <input type="text" id="nameInput" placeholder="Нэрээ оруулна уу..." maxlength="20" autocomplete="off" />
+      </div>
+
+      <div class="input-group">
+        <label>Өрөө сонгох</label>
+        <div class="room-picker" id="roomPicker">
+          <div class="room-option active" data-room="general"># general</div>
+          <div class="room-option" data-room="tech"># tech</div>
+          <div class="room-option" data-room="random"># random</div>
+          <div class="room-option" data-room="design"># design</div>
+        </div>
+      </div>
+
+      <button id="joinBtn" class="join-btn">Чатад нэгдэх →</button>
+      <p id="joinError" class="join-error"></p>
+    </div>
+  </div>
+
+  <!-- CHAT SCREEN -->
+  <div id="chatScreen" class="chat-screen hidden">
+
+    <div class="sidebar">
+      <div class="sidebar-top">
+        <div class="logo-small">⚡ LIVECHAT</div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">ӨРӨӨНҮҮД</div>
+        <div id="roomList" class="room-list"></div>
+      </div>
+
+      <div class="sidebar-section">
+        <div class="section-label">ОНЛАЙН (<span id="onlineCount">0</span>)</div>
+        <div id="userList" class="user-list"></div>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="my-info">
+          <div class="my-avatar" id="myAvatar">?</div>
+          <div class="my-name" id="myName">-</div>
+          <div class="online-dot"></div>
+        </div>
+        <button id="leaveBtn" class="leave-btn" title="Гарах">✕</button>
+      </div>
+    </div>
+
+    <div class="chat-main">
+      <div class="chat-header">
+        <div class="header-left">
+          <span class="hash">#</span>
+          <span id="currentRoom">general</span>
+        </div>
+        <div class="live-pill">
+          <span class="live-dot"></span>
+          LIVE
+        </div>
+      </div>
+
+      <div class="messages" id="messages"></div>
+
+      <div class="typing-bar" id="typingBar"></div>
+
+      <div class="input-bar">
+        <input
+          type="text"
+          id="msgInput"
+          placeholder="Мессеж бичих..."
+          maxlength="500"
+          autocomplete="off"
+        />
+        <button id="sendBtn" class="send-btn">
+          <svg viewBox="0 0 24 24" fill="white" width="18" height="18">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
