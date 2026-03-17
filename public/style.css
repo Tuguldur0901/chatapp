@@ -3,19 +3,18 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  /* Spider-Man Palette */
-  --bg:         #08090d;        /* Гүн хар хөх (Костюмны бараан хэсэг) */
-  --surface:    #121620;        /* Бараан хөх */
-  --surface2:   #1a1f2e;        /* Дунд хөх */
-  --surface3:   #252b3d;        /* Цайвар хөх */
-  --border:     rgba(227, 34, 39, 0.15); /* Улаан туяатай хүрээ */
-  --border2:    rgba(227, 34, 39, 0.3);  
-  --accent:     #e32227;        /* Spider-Red (Үндсэн улаан) */
-  --accent2:    #3a86ff;        /* Spider-Blue (Үндсэн хөх) */
-  --danger:     #ff4f6a;
-  --text:       #f8f9fa;        /* Тод цагаан текст */
-  --muted:      #7a8296;        /* Саарал хөх */
-  --muted2:     #4a5266;
+  --bg:        #0a0a0f;
+  --surface:   #111118;
+  --surface2:  #18181f;
+  --surface3:  #1f1f28;
+  --border:    rgba(130,110,255,0.14);
+  --border2:   rgba(130,110,255,0.28);
+  --accent:    #7864ff;
+  --accent2:   #00e5b0;
+  --danger:    #ff4f6a;
+  --text:      #e4e2ff;
+  --muted:     #6a6882;
+  --muted2:    #4a4862;
 }
 
 html, body {
